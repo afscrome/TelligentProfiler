@@ -1,10 +1,13 @@
-================================
-        ABOUT THE ADDON
-================================
+The Evolution Profiler utility provides you with information about how the page was
+loaded, as well as how long each part took to load. 
 
-The Evolution Profiler addon provides metrics about how long various operations performed
-in the rendering of a page take to load.  This information can be used to track down
-performance issues.
+This is perfect for troubleshooting cases where specific pages are taking longer to
+load than expected as it will allow you to narrow down exactly where the performance
+issue is located.
+
+This tool may be of less help if you’re experiencing site wide performance issues
+– it will help if there is one particular cause on every page that’s being slow, but
+will not help in the case of a load related issue where everything is running slow.
 
 The profiling functionality is powered by http://miniprofiler.com/
 
@@ -13,23 +16,14 @@ The profiling functionality is powered by http://miniprofiler.com/
         USING THE ADDON
 ================================
 
-After a page has loaded, a list of timings will be shown in the top left of the screen
-showing how long it has taken to load a number of resources on your page. Clicking on
-these timings will open a popup showing a hierarchy of the operations taken to load 
+After a page has loaded, a list of timings will be shown in the top left of the screen,
+each one showing how long it has taken to load a resource used by the current page.
+Clicking on one of these these timings will open a popup showing a hierarchy of the
+operations taken to that resource.
 
-
-The addon can be configured via the Profiler.config file in your website root:
-
-    localOnly - Profiler results will only be shown when viewing from a local browser
-
-    trivialDuration - actions taking less than this time will be hidden in the trace
-        window unless you click on the "Show Trivial" link
-
-    excludePaths - a comma seperated lists of paths to exclude from profiling
-
-    popupPosition (Left or Right) - Sets where the profiler metrics will be displayed
-
-    maxTracesToShow - the maximum number or traces to show at any one time
+By default, performance results will be shown to all users accessign the community from
+the server itself, as well as Administrators.  This can be customised by configuring the
+Performance Profiler plugin.
 
 
 ================================
@@ -38,11 +32,10 @@ The addon can be configured via the Profiler.config file in your website root:
 
     1. Copy the contents of the /web/ folder into your community.
 
-    2. Configure the diagnostics.config as required
+    2. Go to the Manage Plugins Page in your community (Control Panel > Site
+       Administration > > Manage Plugins)
 
-    3. Open your community in your web browser.  PRofiling results should be displayed
-       on the left or right hand side of the page.
-
+    3. Enable the "Performance Profiler" plugin
 
 ================================
     BUILDING THE SOURCE CODE
