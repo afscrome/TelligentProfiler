@@ -45,7 +45,12 @@ namespace Telligent.Evolution.Profiler
 
 			var app = (HttpApplication)sender;
 			var context = app.Context;
-			context.Items[_notificationStepKey] = MiniProfiler.Current.Step("[aspnet] HttpApplication: " + context.CurrentNotification.ToString());
+
+			string stage = context.CurrentNotification == RequestNotification.PreExecuteRequestHandler
+				? "ExecuteRequestHandler"
+				: context.CurrentNotification.ToString();
+
+			context.Items[_notificationStepKey] = MiniProfiler.Current.Step("[aspnet] HttpApplication: " + stage);
 		}
 
 		private void EndPipelineStage(object sender, EventArgs e)
