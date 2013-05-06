@@ -50,3 +50,22 @@ Performance Profiler plugin.
     2. Open the EvolutionProfiler.sln solution in Visual Studio and Compile
 
 Output will be copied to the /Deploy/ folder
+
+================================
+        TROUBLESHOOTING
+================================
+
+Some users may find that the profiler popup fails to load after installing the plugin
+due to the MiniProfiler resources from /utility/profiler returning 404s.  I'm not
+entirely sure what is causing, however it appears to be a bug in .net 4.0 as I have yet
+to see this issue occur on a machine with .net 4.5 installed.
+
+As a workaround for this issue, register the following handler in the <handlers /> section of your community's web.config.
+
+    <add name="MiniProfiler"
+         path="utility/profiler/*"
+         verb="*"
+         type="System.Web.Routing.UrlRoutingModule"
+         resourceType="Unspecified"
+         preCondition="integratedMode"
+         />
